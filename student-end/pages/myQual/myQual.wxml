@@ -1,0 +1,70 @@
+<view class="container">
+
+<!-- 顶部统计 -->
+<view class="stats-card">
+  <view class="stats-left">
+    <text class="stats-title">我的资质</text>
+    <text class="stats-sub">共 {{totalCount}} 份证书/奖项</text>
+  </view>
+  <view class="stats-right">
+    <view class="stat-item">
+      <text class="stat-num">{{passedCount}}</text>
+      <text class="stat-label">已通过</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-num pending">{{pendingCount}}</text>
+      <text class="stat-label">审核中</text>
+    </view>
+  </view>
+</view>
+
+<!-- 标签栏 -->
+<view class="tabs">
+  <view class="tab {{currentTab === 'all' ? 'active' : ''}}" bindtap="onTabChange" data-tab="all">全部</view>
+  <view class="tab {{currentTab === 'pending' ? 'active' : ''}}" bindtap="onTabChange" data-tab="pending">审核中</view>
+  <view class="tab {{currentTab === 'passed' ? 'active' : ''}}" bindtap="onTabChange" data-tab="passed">已通过</view>
+  <view class="tab {{currentTab === 'rejected' ? 'active' : ''}}" bindtap="onTabChange" data-tab="rejected">已驳回</view>
+</view>
+
+<!-- 资质列表 -->
+<scroll-view class="cert-list" scroll-y enhanced show-scrollbar="{{false}}">
+  <block wx:if="{{filteredCerts.length > 0}}">
+    <view class="cert-card" wx:for="{{filteredCerts}}" wx:key="id">
+      <view class="cert-header">
+        <text class="cert-icon">🏅</text>
+        <view class="cert-title-wrap">
+          <text class="cert-title">{{item.certName}}</text>
+          <text class="cert-time">提交时间：{{item.submitTime}}</text>
+        </view>
+        <view class="status-tag {{item.status}}">
+          {{item.status === 'pending' ? '审核中' : (item.status === 'passed' ? '已通过' : '已驳回')}}
+        </view>
+      </view>
+
+      <view class="cert-body">
+        <text class="cert-meta">发证机构：{{item.issuer}}</text>
+        <text class="cert-meta">证书编号：{{item.certNo}}</text>
+      </view>
+
+      <!-- 驳回原因 -->
+      <view wx:if="{{item.status === 'rejected' && item.rejectReason}}" class="reject-reason">
+        <text>驳回原因：{{item.rejectReason}}</text>
+      </view>
+    </view>
+  </block>
+
+  <view wx:else class="empty-state">
+    <text class="empty-emoji">🌸</text>
+    <text class="empty-text">暂无资质记录</text>
+    <text class="empty-tip">点击下方按钮上传证书吧</text>
+  </view>
+
+  <view class="list-bottom-space"></view>
+</scroll-view>
+
+<!-- 底部上传按钮 -->
+<view class="bottom-bar">
+  <button class="upload-btn" bindtap="onUploadCert">＋ 上传新证书</button>
+</view>
+
+</view>

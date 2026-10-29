@@ -1,0 +1,78 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 0 24rpx;
+}
+
+/* 搜索框 */
+.search-box {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 40rpx;
+  padding: 16rpx 26rpx;
+  border: 2rpx solid #FFE2EC;
+  box-shadow: 0 10rpx 24rpx -8rpx rgba(255, 183, 197, 0.6), 0 4rpx 10rpx #FFE2EC;
+  margin: 24rpx 0 20rpx;
+}
+.search-icon { font-size: 30rpx; color: #D96C8A; margin-right: 14rpx; }
+.search-input { flex: 1; font-size: 28rpx; color: #5E3E4A; }
+.ph { color: #D9A8B6; font-size: 28rpx; }
+.clear-icon { font-size: 26rpx; color: #D9A8B6; padding: 4rpx 10rpx; }
+
+/* 标签栏 */
+.tabs { display: flex; gap: 12rpx; padding-bottom: 20rpx; }
+.tab {
+  flex: 1; text-align: center; padding: 14rpx 0;
+  font-size: 26rpx; font-weight: 600; color: #B3546B;
+  background: #FFF7FA; border-radius: 40rpx; border: 2rpx solid #FFE2EC;
+}
+.tab.active {
+  background: linear-gradient(135deg, #FFB7C5, #FF9EB5);
+  color: #FFFFFF; border-color: #FF9EB5; box-shadow: 0 8rpx 16rpx -6rpx #FF9EB5;
+}
+
+/* 图书列表 */
+.book-list { flex: 1; height: 0; }
+.book-card {
+  display: flex; align-items: center;
+  background: #FFFFFF; border-radius: 32rpx; padding: 24rpx 22rpx;
+  margin-bottom: 20rpx; box-shadow: 0 12rpx 26rpx -10rpx rgba(255, 183, 197, 0.5), 0 6rpx 14rpx #FFE2EC;
+}
+.book-cover {
+  width: 90rpx; height: 120rpx; border-radius: 16rpx;
+  background: linear-gradient(135deg, #FFE2EC, #FFD0DA);
+  display: flex; align-items: center; justify-content: center; font-size: 50rpx; flex-shrink: 0;
+}
+.book-info { flex: 1; margin-left: 22rpx; overflow: hidden; }
+.book-title { font-size: 32rpx; font-weight: 700; color: #C44B6B; margin-bottom: 8rpx; }
+.book-meta { font-size: 24rpx; color: #B18B98; margin-bottom: 4rpx; }
+.book-stock { font-size: 22rpx; color: #D96C8A; margin-top: 6rpx; }
+
+/* 按钮和状态 */
+.book-actions {
+  display: flex; flex-direction: column; align-items: center; gap: 10rpx; flex-shrink: 0;
+}
+.btn {
+  padding: 10rpx 24rpx; border-radius: 40rpx; font-size: 24rpx; font-weight: 600;
+}
+.borrow-btn {
+  background: linear-gradient(135deg, #FFB7C5, #FF9EB5); color: #FFFFFF; box-shadow: 0 6rpx 14rpx -4rpx #FF9EB5;
+}
+.return-btn {
+  background: #FFF0F5; color: #D96C8A; border: 1rpx solid #FFD0DA;
+}
+.status-tag {
+  font-size: 22rpx; font-weight: 600; padding: 8rpx 16rpx; border-radius: 40rpx;
+}
+.status-tag.borrowed { background: #E6F7EE; color: #2BA471; }
+.status-tag.out { background: #F5F5F5; color: #999; }
+
+/* 空状态 */
+.empty-state { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 140rpx 40rpx; }
+.empty-emoji { font-size: 110rpx; margin-bottom: 30rpx; opacity: 0.8; }
+.empty-text { font-size: 30rpx; color: #B18B98; font-weight: 500; margin-bottom: 14rpx; }
+.empty-tip { font-size: 24rpx; color: #D9A8B6; }
+.list-bottom-space { height: 40rpx; }

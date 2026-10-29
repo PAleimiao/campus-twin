@@ -1,0 +1,15 @@
+{
+  "name": "campus-twin-local-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "广演校园 · 本地后端（替代微信云开发，只用 Node 内置模块，无需 npm install）",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "seed": "node seed.js",
+    "reset": "node seed.js --reset"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}

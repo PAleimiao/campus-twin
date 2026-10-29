@@ -1,0 +1,104 @@
+.container {
+  min-height: 100vh;
+  padding: 60rpx 40rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 顶部插画 */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 60rpx;
+}
+.hero-emoji { font-size: 140rpx; }
+.hero-title {
+  font-size: 44rpx; font-weight: 700; color: #C44B6B;
+  margin: 24rpx 0 12rpx; letter-spacing: 2rpx;
+}
+.hero-desc { font-size: 26rpx; color: #B18B98; }
+
+/* 输入卡片 */
+.input-card {
+  width: 100%;
+  background: #FFFFFF;
+  border-radius: 40rpx;
+  padding: 50rpx 40rpx 40rpx;
+  box-shadow: 0 20rpx 40rpx -12rpx rgba(255, 183, 197, 0.55), 0 8rpx 20rpx #FFE2EC;
+}
+
+.code-inputs {
+  display: flex;
+  justify-content: space-between;
+  gap: 20rpx;
+  margin-bottom: 50rpx;
+}
+.code-box {
+  flex: 1;
+  height: 120rpx;
+  background: #FFF7FA;
+  border: 3rpx solid #FFE2EC;
+  border-radius: 24rpx;
+  text-align: center;
+  font-size: 60rpx;
+  font-weight: 700;
+  color: #C44B6B;
+  box-sizing: border-box;
+}
+.code-box.filled {
+  background: linear-gradient(135deg, #FFE2EC, #FFD0DA);
+  border-color: #FF9EB5;
+  color: #B3415E;
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, #FFB7C5, #FF9EB5);
+  color: #FFFFFF;
+  font-size: 32rpx;
+  font-weight: 600;
+  border-radius: 48rpx;
+  box-shadow: 0 12rpx 24rpx -8rpx #FF9EB5;
+  height: 92rpx;
+  line-height: 92rpx;
+}
+.submit-btn::after { border: none; }
+
+.tip {
+  text-align: center;
+  font-size: 24rpx;
+  color: #D9A8B6;
+  margin-top: 24rpx;
+}
+
+/* 结果卡 */
+.result-card {
+  width: 100%;
+  border-radius: 32rpx;
+  padding: 40rpx 30rpx;
+  margin-top: 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.result-card.ok {
+  background: linear-gradient(135deg, #FFC1D0, #FF9EB5);
+  box-shadow: 0 16rpx 32rpx -10rpx rgba(255, 158, 181, 0.6);
+}
+.result-card.fail {
+  background: #FFFFFF;
+  border: 2rpx solid #FFD0DA;
+  box-shadow: 0 12rpx 26rpx -10rpx rgba(255, 183, 197, 0.5);
+}
+.result-emoji { font-size: 80rpx; margin-bottom: 16rpx; }
+.result-title {
+  font-size: 36rpx; font-weight: 700;
+  color: #FFFFFF;
+  text-shadow: 0 2rpx 4rpx rgba(217,108,138,0.4);
+  margin-bottom: 10rpx;
+}
+.result-card.fail .result-title { color: #C44B6B; text-shadow: none; }
+.result-sub { font-size: 26rpx; color: rgba(255,255,255,0.9); }
+.result-card.fail .result-sub { color: #B18B98; }

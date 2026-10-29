@@ -1,0 +1,91 @@
+<view class="container">
+
+<!-- 未发起状态：填写签到信息 -->
+<block wx:if="{{!activeCode}}">
+  <view class="hero-card">
+    <text class="hero-emoji">🏠</text>
+    <text class="hero-title">发起宿舍签到</text>
+    <text class="hero-desc">生成 4 位签到码，学生在宿舍楼下输入即可归寝签到</text>
+  </view>
+
+  <view class="form-card">
+    <view class="form-row">
+      <text class="form-label">签到主题</text>
+      <input class="form-input" placeholder="如：今晚 22:00 归寝签到"
+        placeholder-class="ph" value="{{topic}}" bindinput="onTopicInput" />
+    </view>
+
+    <view class="form-row">
+      <text class="form-label">签到楼栋</text>
+      <picker mode="selector" range="{{buildings}}" value="{{buildingIndex}}"
+        bindchange="onBuildingChange">
+        <view class="picker-value">{{buildings[buildingIndex]}} ▾</view>
+      </picker>
+    </view>
+
+    <view class="form-row">
+      <text class="form-label">有效时长</text>
+      <picker mode="selector" range="{{durations}}" value="{{durationIndex}}"
+        bindchange="onDurationChange">
+        <view class="picker-value">{{durations[durationIndex]}} ▾</view>
+      </picker>
+    </view>
+
+    <button class="start-btn" bindtap="onStartCheckin">发起签到</button>
+  </view>
+</block>
+
+<!-- 已发起状态：显示签到码 + 归寝情况 -->
+<block wx:else>
+  <view class="code-card">
+    <text class="code-label">宿舍签到码</text>
+    <text class="code-value">{{activeCode}}</text>
+    <text class="code-topic">{{topic}}</text>
+    <text class="code-building">🏢 {{buildings[buildingIndex]}}</text>
+    <text class="code-time">剩余 {{remainText}}</text>
+  </view>
+
+  <view class="stats-row">
+    <view class="stat-box">
+      <text class="stat-num">{{checkedCount}}</text>
+      <text class="stat-label">已归寝</text>
+    </view>
+    <view class="stat-box">
+      <text class="stat-num uncheck">{{students.length - checkedCount}}</text>
+      <text class="stat-label">未归寝</text>
+    </view>
+  </view>
+
+  <view class="list-title">📋 归寝情况（按宿舍）</view>
+  <scroll-view class="student-list" scroll-y enhanced show-scrollbar="{{false}}">
+    <block wx:for="{{groupedStudents}}" wx:for-item="group" wx:key="dorm">
+      <view class="dorm-group">
+        <view class="dorm-header">
+          <view class="dorm-left">
+            <text class="dorm-name">🏠 {{group.dorm}}</text>
+            <text class="dorm-count">{{group.checked}}/{{group.total}} 已归寝</text>
+          </view>
+          <view class="dorm-check-all" catchtap="onDormCheckAll" data-dorm="{{group.dorm}}">全寝签到</view>
+        </view>
+
+        <view class="stu-card" wx:for="{{group.students}}" wx:for-item="stu" wx:key="id">
+          <view class="stu-avatar">{{stu.avatarText}}</view>
+          <view class="stu-info">
+            <text class="stu-name">{{stu.name}}</text>
+            <text class="stu-dorm-text">{{stu.dorm}}</text>
+            <!-- 👇 显示几点签到的核心代码 👇 -->
+            <text wx:if="{{stu.checked}}" style="font-size: 20rpx; color: #2BA471; margin-top: 4rpx;">✓ {{stu.signTime}} 已签到</text>
+          </view>
+          <view class="stu-status {{stu.checked ? 'ok' : 'no'}}">
+            {{stu.checked ? '已归寝' : '未归寝'}}
+          </view>
+        </view>
+      </view>
+    </block>
+    <view class="bottom-space"></view>
+  </scroll-view>
+
+  <button class="stop-btn" bindtap="onStopCheckin">结束签到</button>
+</block>
+
+</view>

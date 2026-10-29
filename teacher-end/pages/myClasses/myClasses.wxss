@@ -1,0 +1,172 @@
+/* pages/myclasses/myclasses.wxss */
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 24rpx;
+}
+
+/* 顶部提示卡片 */
+.tip-card {
+  display: flex;
+  align-items: center;
+  background: #FFFFFF;
+  border-radius: 32rpx;
+  padding: 28rpx;
+  margin-bottom: 24rpx;
+  box-shadow: 0 12rpx 26rpx -10rpx rgba(255, 183, 197, 0.5), 0 6rpx 14rpx #FFE2EC;
+}
+.tip-emoji {
+  font-size: 60rpx;
+  margin-right: 20rpx;
+}
+.tip-text {
+  display: flex;
+  flex-direction: column;
+}
+.tip-title {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #C44B6B;
+  margin-bottom: 6rpx;
+}
+.tip-desc {
+  font-size: 24rpx;
+  color: #B18B98;
+}
+
+/* 班级列表 */
+.class-list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.class-card {
+  display: flex;
+  align-items: center;
+  background: #FFFFFF;
+  border-radius: 32rpx;
+  padding: 28rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 12rpx 26rpx -10rpx rgba(255, 183, 197, 0.5), 0 6rpx 14rpx #FFE2EC;
+  border: 2rpx solid transparent;
+  transition: all 0.2s;
+}
+
+.class-card.active {
+  border-color: #FF9EB5;
+  background: #FFF5F8;
+}
+
+.card-hover {
+  transform: scale(0.98);
+  background: #FFFBFD;
+}
+
+.class-emoji {
+  font-size: 52rpx;
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 28rpx;
+  background: linear-gradient(135deg, #FFE2EC, #FFD0DA);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.class-info {
+  flex: 1;
+  margin-left: 24rpx;
+}
+
+.class-name {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #5E3E4A;
+  margin-bottom: 10rpx;
+}
+
+.class-detail {
+  display: flex;
+  gap: 12rpx;
+  font-size: 24rpx;
+  color: #B18B98;
+}
+
+.active-badge {
+  background: linear-gradient(135deg, #FFB7C5, #FF9EB5);
+  color: #FFFFFF;
+  font-size: 22rpx;
+  font-weight: 600;
+  padding: 8rpx 20rpx;
+  border-radius: 40rpx;
+  box-shadow: 0 6rpx 12rpx -4rpx #FF9EB5;
+}
+
+.arrow {
+  font-size: 44rpx;
+  color: #D9A8B6;
+  font-weight: 300;
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 140rpx 40rpx;
+}
+.empty-emoji {
+  font-size: 110rpx;
+  margin-bottom: 30rpx;
+  opacity: 0.8;
+}
+.empty-text {
+  font-size: 30rpx;
+  color: #B18B98;
+  font-weight: 500;
+  margin-bottom: 14rpx;
+}
+.empty-tip {
+  font-size: 24rpx;
+  color: #D9A8B6;
+}
+
+/* 底部新建班级按钮 */
+.add-class-bar {
+  padding-top: 20rpx;
+}
+.add-class-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 92rpx;
+  background: linear-gradient(135deg, #FFB7C5, #FF9EB5);
+  color: #FFFFFF;
+  font-size: 30rpx;
+  font-weight: 600;
+  border-radius: 46rpx;
+  box-shadow: 0 12rpx 24rpx -8rpx #FF9EB5;
+}
+.add-icon {
+  font-size: 36rpx;
+  margin-right: 8rpx;
+}
+
+/* 删除按钮 */
+.delete-btn {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  background: #FFECF0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  margin-left: 12rpx;
+  flex-shrink: 0;
+  border: 1rpx solid #FFD0DA;
+}

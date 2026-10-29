@@ -1,0 +1,90 @@
+<view class="container">
+
+<!-- 顶部班级信息与下拉切换 -->
+<view class="header">
+  <picker mode="selector" range="{{allClasses}}" range-key="name" bindchange="onSwitchClass">
+    <view class="class-info">
+      <text class="class-emoji">🌸</text>
+      <view class="class-text">
+        <view style="display: flex; align-items: center;">
+          <text class="class-name">{{className}}</text>
+          <text style="color: #B3546B; font-size: 24rpx; margin-left: 10rpx;">▾ 切换</text>
+        </view>
+        <text class="class-count">共 {{students.length}} 名学生</text>
+      </view>
+    </view>
+  </picker>
+</view>
+
+<!-- 搜索框 -->
+<view class="search-area">
+  <view class="search-box">
+    <text class="search-icon">🔍</text>
+    <input class="search-input" placeholder="搜索学生姓名..." placeholder-class="search-placeholder"
+      value="{{searchKey}}" bindinput="onSearchInput" />
+    <text wx:if="{{searchKey}}" class="clear-icon" bindtap="clearSearch">✕</text>
+  </view>
+</view>
+
+<!-- 操作栏 -->
+<view class="action-bar">
+  <text class="action-title">👥 学生名单（{{filteredStudents.length}}）</text>
+  <view class="action-btns">
+    <view class="import-btn" bindtap="onImportCSV">导入表格</view>
+    <view class="add-btn" bindtap="onAddStudent">
+      <text class="add-icon">＋</text>
+      <text>添加学生</text>
+    </view>
+  </view>
+</view>
+
+<!-- 学生列表 -->
+<scroll-view class="student-list" scroll-y enhanced show-scrollbar="{{false}}">
+  <block wx:if="{{filteredStudents.length > 0}}">
+    <view class="student-card" wx:for="{{filteredStudents}}" wx:key="id">
+      <view class="avatar">{{item.avatarText}}</view>
+      <view class="student-info">
+        <view class="name-row">
+          <text class="student-name">{{item.name}}</text>
+          <text class="student-tag">{{item.tag}}</text>
+        </view>
+        <view class="detail-row">
+          <text class="detail-item">{{item.gender === '女' ? '👧' : '👦'}} {{item.gender}}</text>
+          <text class="detail-item">🎂 {{item.age}}岁</text>
+          <text class="detail-item">🎯 {{item.hobby}}</text>
+        </view>
+      </view>
+      <view class="card-actions">
+        <view class="icon-btn edit" catchtap="onEditStudent" data-id="{{item.id}}">
+          <text>✏️</text>
+        </view>
+        <view class="icon-btn delete" catchtap="onDeleteStudent" data-id="{{item.id}}" data-name="{{item.name}}">
+          <text>🗑️</text>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <!-- 空状态 -->
+  <view wx:else class="empty-state">
+    <text class="empty-emoji">🌸</text>
+    <text class="empty-text">还没有学生哦~</text>
+    <text class="empty-tip">点击「添加学生」或「导入表格」开始吧</text>
+  </view>
+  <view class="list-bottom-space"></view>
+</scroll-view>
+
+<!-- 添加学生弹窗 -->
+<view wx:if="{{showAddModal}}" class="mask" catchtap="closeAddModal">
+  <view class="modal" catchtap="noop">
+    <view class="modal-title">添加学生</view>
+    <input class="modal-input" placeholder="请输入学生姓名" placeholder-class="modal-ph"
+      value="{{newStudentName}}" bindinput="onNewNameInput" focus="{{showAddModal}}" />
+    <view class="modal-btns">
+      <view class="modal-btn cancel" bindtap="closeAddModal">取消</view>
+      <view class="modal-btn confirm" bindtap="confirmAddStudent">确定</view>
+    </view>
+  </view>
+</view>
+
+</view>

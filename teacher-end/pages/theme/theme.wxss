@@ -1,0 +1,17 @@
+/* pages/theme/theme.wxss */
+.swatches { display: flex; flex-wrap: wrap; }
+.swatch { width: 33.33%; box-sizing: border-box; padding: 16rpx 8rpx; text-align: center; }
+.dot {
+  width: 96rpx; height: 96rpx; border-radius: 50%;
+  margin: 0 auto 12rpx;
+  box-shadow: 0 4rpx 14rpx rgba(40, 40, 80, .12);
+  border: 6rpx solid #fff;
+}
+.swatch.on .dot { border-color: var(--accent); }
+.swatch-name { font-size: 24rpx; color: var(--text2); }
+.swatch.on .swatch-name { color: var(--accent); font-weight: 600; }
+.custom-preview {
+  height: 160rpx; border-radius: 20rpx;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 24rpx; color: #fff; font-size: 30rpx; letter-spacing: 2rpx;
+}

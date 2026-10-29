@@ -1,0 +1,9 @@
+{
+  "name": "seedOrg",
+  "version": "1.0.0",
+  "description": "校园双端系统 - 组织树初始化种子脚本",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

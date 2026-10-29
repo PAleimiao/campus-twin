@@ -1,0 +1,19 @@
+<!-- pages/announce/announce.wxml —— 校园公告列表 -->
+<view class="page" style="--accent:{{theme.accent}}; --accent-soft:{{theme.soft}};">
+
+  <view wx:if="{{loading}}" class="card muted">加载中...</view>
+
+  <view wx:elif="{{list.length === 0}}" class="card muted">暂时没有公告</view>
+
+  <view wx:else class="list">
+    <view class="card item" wx:for="{{list}}" wx:key="id" data-i="{{index}}" bindtap="toggle">
+      <view class="row">
+        <view class="title">{{item.title}}</view>
+        <view class="pill">{{item.scopeText}}</view>
+      </view>
+      <view class="meta">{{item.publisherName}} · {{item.dateText}}</view>
+      <view wx:if="{{openIdx === index}}" class="content">{{item.content}}</view>
+      <view wx:else class="more muted">点击查看详情 ></view>
+    </view>
+  </view>
+</view>

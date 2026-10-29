@@ -1,0 +1,36 @@
+<!-- pages/ai/ai.wxml —— AI 答疑聊天 -->
+<view class="page" style="--accent:{{theme.accent}}; --accent-soft:{{theme.soft}};">
+
+  <scroll-view class="chat" scroll-y scroll-into-view="{{scrollTo}}" scroll-with-animation>
+    <view wx:for="{{messages}}" wx:key="index" id="msg-{{index}}" class="msg {{item.role}}">
+      <view class="msg-col">
+        <!-- 模型的思考过程：默认收起，点一下展开（只有云端大模型会给） -->
+        <view wx:if="{{item.thinking}}" class="think" data-index="{{index}}" bindtap="onToggleThink">
+          <view class="think-head">
+            <text class="think-icon">◌</text>
+            <text class="think-title">{{item.thinkOpen ? '收起思考过程' : '查看思考过程'}}</text>
+            <text class="think-len">{{item.thinkLen}} 字</text>
+          </view>
+          <view wx:if="{{item.thinkOpen}}" class="think-body">{{item.thinking}}</view>
+        </view>
+        <view class="bubble">{{item.text}}</view>
+        <!-- 答案来源标记：AI 生成 / 本机模型 / 本地知识库 -->
+        <view wx:if="{{item.tag}}" class="tag">{{item.tag}}</view>
+      </view>
+    </view>
+    <!-- 等待后端回答时的占位气泡 -->
+    <view wx:if="{{pending}}" class="msg ai">
+      <view class="bubble typing">
+        <view class="typing-main">AI 正在思考（大模型推理约需几秒，请稍候）<text class="dot">.</text><text class="dot">.</text><text class="dot">.</text></view>
+        <view wx:if="{{waited}}" class="typing-tip">已等待 {{waited}} 秒…</view>
+      </view>
+    </view>
+    <view class="pad"></view>
+  </scroll-view>
+
+  <view class="inputbar">
+    <input class="ipt" placeholder="问点什么..." value="{{input}}" bindinput="onInput"
+           confirm-type="send" bindconfirm="send" />
+    <view class="send" bindtap="send">发送</view>
+  </view>
+</view>

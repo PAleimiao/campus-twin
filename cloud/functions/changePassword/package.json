@@ -1,0 +1,9 @@
+{
+  "name": "changePassword",
+  "version": "1.0.0",
+  "description": "校园双端系统 - 修改密码",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

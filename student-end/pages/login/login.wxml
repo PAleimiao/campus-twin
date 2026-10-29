@@ -1,0 +1,27 @@
+<!-- pages/login/login.wxml —— 学生登录页 -->
+<view class="page" style="--accent:{{theme.accent}}; --accent-soft:{{theme.soft}};">
+  <!-- 顶部品牌区 -->
+  <view class="hero">
+    <view class="logo">广演校园</view>
+    <view class="subtitle">智慧校园 · 学生端</view>
+  </view>
+
+  <!-- 登录卡片 -->
+  <view class="card">
+    <view class="h2">登录</view>
+    <view class="muted" style="margin-bottom:24rpx;">用学号 + 初始密码登录</view>
+
+    <view class="field">
+      <text class="label">学号</text>
+      <input class="input" placeholder="请输入学号" value="{{account}}" bindinput="onAccountInput" />
+    </view>
+
+    <view class="field">
+      <text class="label">密码</text>
+      <input class="input" placeholder="初始密码 123456" password value="{{password}}" bindinput="onPwdInput" />
+    </view>
+
+    <button class="btn" bindtap="onLogin">登 录</button>
+    <view class="tip">首次登录默认密码 123456，登录后需立即修改</view>
+  </view>
+</view>

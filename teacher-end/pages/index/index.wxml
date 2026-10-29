@@ -1,0 +1,44 @@
+<!-- pages/index/index.wxml —— 教师端工作台 -->
+<view class="page" style="--accent:{{theme.accent}}; --accent-soft:{{theme.soft}};">
+
+  <!-- 顶部横幅：图片在 config.js 的 bannerImage 里换 -->
+  <view class="banner">
+    <image wx:if="{{banner}}" class="banner-img" src="{{banner}}" mode="aspectFill"></image>
+    <view wx:else class="banner-ph"></view>
+    <view class="banner-shade"></view>
+    <view class="banner-text">
+      <view class="banner-title">{{bannerTitle}}</view>
+      <view class="banner-sub">{{bannerSubtitle}}</view>
+    </view>
+    <view class="theme-btn" bindtap="goTheme">🎨 主题
+    </view>
+  </view>
+
+  <!-- 顶部问候卡 -->
+  <view class="card">
+    <view class="greet">你好，{{name || '老师'}} 👋</view>
+    <view class="muted">班级管理 · 智慧校园后台</view>
+  </view>
+
+  <!-- 我的班级（占位，等教师接口接好再渲染真实班级列表） -->
+  <view class="card my-classes-card">
+  <view class="my-classes-left" bindtap="onTapModule" data-key="myClasses">
+    <view class="h2">我的班级</view>
+    <view class="muted">选择/管理班级 →</view>
+  </view>
+  <view class="my-classes-right" bindtap="onTapModule" data-key="myClasses">
+  <text>管理</text>
+</view>
+</view>
+
+  <!-- 管理模块宫格 -->
+  <view class="grid">
+    <view class="cell" wx:for="{{modules}}" wx:key="key" data-key="{{item.key}}" bindtap="onTapModule">
+      <view class="cell-icon">{{item.icon}}</view>
+      <view class="cell-name">{{item.name}}</view>
+      <view class="cell-desc">{{item.desc}}</view>
+    </view>
+  </view>
+
+  <button class="btn-ghost logout" bindtap="onLogout">退出登录</button>
+</view>

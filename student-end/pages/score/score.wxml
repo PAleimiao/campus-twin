@@ -1,0 +1,21 @@
+<!-- pages/score/score.wxml —— 成绩查询 -->
+<view class="page" style="--accent:{{theme.accent}}; --accent-soft:{{theme.soft}};">
+
+  <view wx:if="{{avg}}" class="card avg-card">
+    <view class="avg-label">平均分</view>
+    <view class="avg-num">{{avg}}</view>
+  </view>
+
+  <view wx:if="{{loading}}" class="card muted">加载中...</view>
+  <view wx:elif="{{list.length === 0}}" class="card muted">还没有成绩记录</view>
+
+  <view wx:else>
+    <view class="card sc" wx:for="{{list}}" wx:key="_id">
+      <view class="sc-left">
+        <view class="sc-name">{{item.courseName}}</view>
+        <view class="sc-info">{{item.semester}}</view>
+      </view>
+      <view class="sc-score {{item.score >= 60 ? 'pass' : 'fail'}}">{{item.score}}</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,11 @@
+# 运行时自动下载的 Node（体积大，不入库）
+.runtime/
+# npm 依赖（本项目通常没有）
+node_modules/
+# 离线自带包：Ollama 安装包 + 本地模型文件，合计约 1GB。
+# 它只在文件夹里（拷走/U盘带着走都能用），但不进 Git —— 仓库塞 1GB 二进制会很难受。
+# 如果你确实要把它提交进仓库，把下面这行删掉就行。
+local-ai/
+# AI 密钥配置（里面是密钥，绝不入库；仓库里只放 ai.config.example.json）
+ai.config.json
+ai.key

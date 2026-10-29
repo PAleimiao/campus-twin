@@ -1,0 +1,23 @@
+<!-- pages/leave/leave.wxml —— 请假审批列表 -->
+<view class="page" style="--accent:{{theme.accent}}; --accent-soft:{{theme.soft}};">
+
+  <view wx:if="{{loading}}" class="card muted">加载中...</view>
+  <view wx:elif="{{list.length === 0}}" class="card muted">本班暂无请假申请</view>
+
+  <view wx:else>
+    <view class="card lv" wx:for="{{list}}" wx:key="_id">
+      <view class="lv-head">
+        <view class="lv-name">{{item.name}} <text class="lv-no">{{item.studentNo}}</text></view>
+        <view class="status {{item.status}}">{{item.statusText}}</view>
+      </view>
+      <view class="lv-info">{{item.type}} · {{item.start}} ~ {{item.end}}</view>
+      <view class="lv-reason">{{item.reason}}</view>
+      <view wx:if="{{item.comment}}" class="lv-comment">意见：{{item.comment}}</view>
+
+      <view wx:if="{{item.isPending}}" class="btns">
+        <button class="btn ghost" data-id="{{item._id}}" data-ok="0" bindtap="decide">驳回</button>
+        <button class="btn" data-id="{{item._id}}" data-ok="1" bindtap="decide">通过</button>
+      </view>
+    </view>
+  </view>
+</view>

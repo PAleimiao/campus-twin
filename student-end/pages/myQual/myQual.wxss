@@ -1,0 +1,88 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 0 24rpx;
+}
+
+/* 顶部统计 */
+.stats-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #FFC1D0, #FF9EB5);
+  border-radius: 32rpx;
+  padding: 32rpx 28rpx;
+  margin: 24rpx 0 20rpx;
+  box-shadow: 0 16rpx 32rpx -10rpx rgba(255, 158, 181, 0.6), 0 6rpx 14rpx #FFD0DA;
+}
+.stats-left { display: flex; flex-direction: column; }
+.stats-title {
+  font-size: 34rpx; font-weight: 700; color: #FFFFFF;
+  margin-bottom: 8rpx; text-shadow: 0 2rpx 4rpx rgba(217, 108, 138, 0.4);
+}
+.stats-sub { font-size: 24rpx; color: rgba(255, 255, 255, 0.9); }
+.stats-right { display: flex; gap: 36rpx; }
+.stat-item { display: flex; flex-direction: column; align-items: center; }
+.stat-num {
+  font-size: 44rpx; font-weight: 700; color: #FFFFFF;
+  text-shadow: 0 2rpx 4rpx rgba(217, 108, 138, 0.5); line-height: 1.1;
+}
+.stat-num.pending { color: #FFF5F8; }
+.stat-label { font-size: 22rpx; color: rgba(255, 255, 255, 0.9); margin-top: 6rpx; }
+
+/* 标签栏 */
+.tabs { display: flex; gap: 12rpx; padding-bottom: 20rpx; }
+.tab {
+  flex: 1; text-align: center; padding: 14rpx 0;
+  font-size: 24rpx; font-weight: 600; color: #B3546B;
+  background: #FFF7FA; border-radius: 40rpx; border: 2rpx solid #FFE2EC;
+}
+.tab.active {
+  background: linear-gradient(135deg, #FFB7C5, #FF9EB5);
+  color: #FFFFFF; border-color: #FF9EB5; box-shadow: 0 8rpx 16rpx -6rpx #FF9EB5;
+}
+
+/* 列表 */
+.cert-list { flex: 1; height: 0; }
+.cert-card {
+  background: #FFFFFF; border-radius: 32rpx; padding: 28rpx 24rpx;
+  margin-bottom: 20rpx; box-shadow: 0 12rpx 26rpx -10rpx rgba(255, 183, 197, 0.5), 0 6rpx 14rpx #FFE2EC;
+}
+.cert-header { display: flex; align-items: flex-start; border-bottom: 2rpx dashed #FFE2EC; padding-bottom: 20rpx; }
+.cert-icon { font-size: 44rpx; margin-right: 16rpx; }
+.cert-title-wrap { flex: 1; display: flex; flex-direction: column; }
+.cert-title { font-size: 32rpx; font-weight: 700; color: #C44B6B; margin-bottom: 8rpx; }
+.cert-time { font-size: 22rpx; color: #B18B98; }
+
+.status-tag {
+  font-size: 22rpx; font-weight: 600; padding: 6rpx 20rpx; border-radius: 40rpx;
+}
+.status-tag.pending { background: #FFF5F8; color: #FF9E9E; border: 1rpx solid #FFD0DA; }
+.status-tag.passed { background: #E6F7EE; color: #2BA471; }
+.status-tag.rejected { background: #FFECF0; color: #D96C8A; }
+
+.cert-body { padding: 20rpx 0; display: flex; flex-direction: column; gap: 10rpx; }
+.cert-meta { font-size: 24rpx; color: #B18B98; }
+
+.reject-reason {
+  background: #FFF0F5; border-radius: 16rpx; padding: 16rpx 20rpx;
+  font-size: 24rpx; color: #D96C8A;
+}
+
+/* 空状态 */
+.empty-state { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 140rpx 40rpx; }
+.empty-emoji { font-size: 110rpx; margin-bottom: 30rpx; opacity: 0.8; }
+.empty-text { font-size: 30rpx; color: #B18B98; font-weight: 500; margin-bottom: 14rpx; }
+.empty-tip { font-size: 24rpx; color: #D9A8B6; }
+
+/* 底部按钮 */
+.bottom-bar { padding: 24rpx 0; background: #FFF9FB; }
+.upload-btn {
+  width: 100%; height: 92rpx; line-height: 92rpx;
+  background: linear-gradient(135deg, #FFB7C5, #FF9EB5);
+  color: #FFFFFF; font-size: 32rpx; font-weight: 600; border-radius: 48rpx;
+  box-shadow: 0 12rpx 24rpx -8rpx #FF9EB5; border: none;
+}
+.upload-btn::after { border: none; }

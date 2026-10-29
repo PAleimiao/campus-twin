@@ -1,0 +1,9 @@
+{
+  "name": "getNews",
+  "version": "1.0.0",
+  "description": "校园双端系统 - 读取校园资讯（公开）",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

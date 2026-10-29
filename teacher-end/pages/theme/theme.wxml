@@ -1,0 +1,26 @@
+<!-- pages/theme/theme.wxml —— 主题配色设置页 -->
+<view class="page" style="--accent:{{preview}}; --accent-soft:{{previewSoft}};">
+  <view class="card">
+    <view class="h2">主题配色</view>
+    <view class="muted" style="margin-bottom:20rpx;">选一个喜欢的颜色，全站立刻生效</view>
+    <view class="swatches">
+      <view wx:for="{{themes}}" wx:key="key"
+            class="swatch {{current === item.key ? 'on' : ''}}"
+            data-key="{{item.key}}" bindtap="onPickPreset">
+        <view class="dot" style="background:{{item.accent}};"></view>
+        <view class="swatch-name">{{item.name}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="h2">自定义颜色</view>
+    <view class="muted" style="margin-bottom:20rpx;">拖动滑块调出你想要的色相</view>
+    <view class="custom-preview" style="background:{{custom.accent}};">
+      <text>{{custom.accent}}</text>
+    </view>
+    <slider min="0" max="360" value="{{hue}}" activeColor="{{custom.accent}}"
+            block-size="24" bindchanging="onHueChange" bindchange="onHueChange" />
+    <button class="btn" bindtap="onApplyCustom">应用这个颜色</button>
+  </view>
+</view>

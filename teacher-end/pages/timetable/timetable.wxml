@@ -1,0 +1,55 @@
+<!-- pages/timetable/timetable.wxml —— 课表编排（CSV 导入 + 手动） -->
+<view class="page" style="--accent:{{theme.accent}}; --accent-soft:{{theme.soft}};">
+
+  <!-- CSV 导入 -->
+  <view class="card">
+    <view class="h2">导入 CSV 课表</view>
+    <view class="muted tip">格式（WakeUp 课程表同款）：课程名称,星期,开始节数,结束节数,老师,地点,周数</view>
+    <view class="muted tip">例：高等数学,1,1,2,张三,逸夫楼101,1-16</view>
+
+    <view class="btn-row">
+      <button class="btn-ghost half" bindtap="copyTemplate">复制模板</button>
+      <button class="btn-ghost half" bindtap="pickCsvFile">选 CSV 文件</button>
+    </view>
+
+    <textarea class="csv-input" placeholder="或直接把 CSV 内容粘贴到这里（开发者工具里最稳）"
+              value="{{csvText}}" bindinput="onCsvText" />
+    <button class="btn" bindtap="parsePasted">解析粘贴内容</button>
+  </view>
+
+  <!-- 手动添加 -->
+  <view class="card">
+    <view class="h2">手动添加一门课</view>
+    <input class="ipt" placeholder="课程名称" value="{{cur.courseName}}" data-f="courseName" bindinput="onField" />
+    <input class="ipt" placeholder="任课老师" value="{{cur.teacherName}}" data-f="teacherName" bindinput="onField" />
+    <input class="ipt" placeholder="上课地点" value="{{cur.location}}" data-f="location" bindinput="onField" />
+    <view class="pickers">
+      <picker mode="selector" range="{{wd}}" value="{{cur.weekdayIdx}}" data-f="weekdayIdx" bindchange="onPick">
+        <view class="picker">{{wd[cur.weekdayIdx]}}</view>
+      </picker>
+      <picker mode="selector" range="{{periods}}" value="{{cur.startIdx}}" data-f="startIdx" bindchange="onPick">
+        <view class="picker">第{{periods[cur.startIdx]}}节起</view>
+      </picker>
+      <picker mode="selector" range="{{periods}}" value="{{cur.endIdx}}" data-f="endIdx" bindchange="onPick">
+        <view class="picker">第{{periods[cur.endIdx]}}节止</view>
+      </picker>
+    </view>
+    <button class="btn-ghost" bindtap="addRow">添加到列表</button>
+  </view>
+
+  <!-- 待保存列表 -->
+  <view class="card">
+    <view class="h2">待保存（{{rows.length}} 节）</view>
+    <view wx:if="{{rows.length === 0}}" class="muted">还没有课程</view>
+    <view wx:else>
+      <view class="crow" wx:for="{{rows}}" wx:key="index">
+        <view class="cinfo">
+          <view class="cname">{{item.courseName}}</view>
+          <view class="cmeta">{{wd[item.weekday - 1]}} 第{{item.startPeriod}}-{{item.endPeriod}}节 · {{item.teacherName}} · {{item.location}}</view>
+        </view>
+        <view class="del" data-i="{{index}}" bindtap="removeRow">删除</view>
+      </view>
+    </view>
+    <button class="btn save" bindtap="save">保存课表（发布给学生）</button>
+  </view>
+</view>

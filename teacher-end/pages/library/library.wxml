@@ -1,0 +1,132 @@
+<view class="container">
+
+<!-- 顶部统计 -->
+<view class="stats-card">
+  <view class="stats-left">
+    <text class="stats-title">图书管理</text>
+    <text class="stats-sub">共 {{books.length}} 本图书</text>
+  </view>
+  <view class="stats-right">
+    <view class="stat-item">
+      <text class="stat-num">{{onlineCount}}</text>
+      <text class="stat-label">已上架</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-num offline">{{offlineCount}}</text>
+      <text class="stat-label">已下架</text>
+    </view>
+  </view>
+</view>
+
+<!-- 搜索框 -->
+<view class="search-area">
+  <view class="search-box">
+    <text class="search-icon">🔍</text>
+    <input
+      class="search-input"
+      placeholder="搜索书名 / 作者"
+      placeholder-class="search-placeholder"
+      value="{{searchKey}}"
+      bindinput="onSearchInput"
+    />
+    <text wx:if="{{searchKey}}" class="clear-icon" bindtap="clearSearch">✕</text>
+  </view>
+</view>
+
+<!-- 筛选标签 -->
+<view class="tabs">
+  <view class="tab {{currentTab === 'all' ? 'active' : ''}}" bindtap="onTabChange" data-tab="all">全部</view>
+  <view class="tab {{currentTab === 'online' ? 'active' : ''}}" bindtap="onTabChange" data-tab="online">已上架</view>
+  <view class="tab {{currentTab === 'offline' ? 'active' : ''}}" bindtap="onTabChange" data-tab="offline">已下架</view>
+</view>
+
+<!-- 操作栏 -->
+<view class="action-bar">
+  <text class="action-title">📚 图书列表（{{filteredBooks.length}}）</text>
+  <view class="add-btn" bindtap="onAddBook">
+    <text class="add-icon">＋</text>
+    <text>添加图书</text>
+  </view>
+</view>
+
+<!-- 图书列表 -->
+<scroll-view class="book-list" scroll-y enhanced show-scrollbar="{{false}}">
+  <block wx:if="{{filteredBooks.length > 0}}">
+    <view class="book-card" wx:for="{{filteredBooks}}" wx:key="id">
+      <view class="book-cover">{{item.cover}}</view>
+
+      <view class="book-info">
+        <view class="book-title-row">
+          <text class="book-title">{{item.title}}</text>
+          <text class="status-tag {{item.online ? 'online' : 'offline'}}">
+            {{item.online ? '已上架' : '已下架'}}
+          </text>
+        </view>
+        <text class="book-author">作者：{{item.author}}</text>
+        <view class="book-meta">
+          <text class="meta-item">📖 {{item.category}}</text>
+          <text class="meta-item">📦 库存 {{item.stock}}</text>
+        </view>
+      </view>
+
+      <!-- 操作按钮 -->
+      <view class="book-actions">
+        <view
+          class="toggle-btn {{item.online ? 'offline-btn' : 'online-btn'}}"
+          catchtap="onToggleOnline"
+          data-id="{{item.id}}"
+        >
+          {{item.online ? '下架' : '上架'}}
+        </view>
+        <view class="delete-btn" catchtap="onDeleteBook" data-id="{{item.id}}" data-title="{{item.title}}">🗑️</view>
+      </view>
+    </view>
+  </block>
+
+  <view wx:else class="empty-state">
+    <text class="empty-emoji">📚</text>
+    <text class="empty-text">没有找到图书</text>
+    <text class="empty-tip">换个关键词试试</text>
+  </view>
+
+  <view class="list-bottom-space"></view>
+</scroll-view>
+
+<!-- 添加图书弹窗 -->
+<view wx:if="{{showAddModal}}" class="mask" catchtap="closeAddModal">
+  <!-- 👇 关键修改：这里写 noop，阻止点击内部时触发外层的关闭 👇 -->
+  <view class="modal" catchtap="noop">
+    <view class="modal-title">添加图书</view>
+
+    <view class="form-row">
+      <text class="form-label">书名</text>
+      <input class="form-input" placeholder="请输入书名" placeholder-class="modal-ph"
+        value="{{newBook.title}}" bindinput="onTitleInput" />
+    </view>
+
+    <view class="form-row">
+      <text class="form-label">作者</text>
+      <input class="form-input" placeholder="请输入作者" placeholder-class="modal-ph"
+        value="{{newBook.author}}" bindinput="onAuthorInput" />
+    </view>
+
+    <view class="form-row">
+      <text class="form-label">分类</text>
+      <input class="form-input" placeholder="如：文学、科技" placeholder-class="modal-ph"
+        value="{{newBook.category}}" bindinput="onCategoryInput" />
+    </view>
+
+    <view class="form-row">
+      <text class="form-label">库存</text>
+      <input class="form-input" type="number" placeholder="库存数量" placeholder-class="modal-ph"
+        value="{{newBook.stock}}" bindinput="onStockInput" />
+    </view>
+
+    <view class="modal-btns">
+      <view class="modal-btn cancel" bindtap="closeAddModal">取消</view>
+      <view class="modal-btn confirm" bindtap="confirmAddBook">确定</view>
+    </view>
+  </view>
+</view>
+
+</view>

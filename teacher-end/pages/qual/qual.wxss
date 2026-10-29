@@ -1,0 +1,253 @@
+/* pages/qual/qual.wxss */
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 0 24rpx;
+}
+
+/* 顶部统计卡 */
+.stats-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #FFC1D0, #FF9EB5);
+  border-radius: 32rpx;
+  padding: 32rpx 28rpx;
+  margin: 24rpx 0 20rpx;
+  box-shadow: 0 16rpx 32rpx -10rpx rgba(255, 158, 181, 0.6), 0 6rpx 14rpx #FFD0DA;
+}
+.stats-left {
+  display: flex;
+  flex-direction: column;
+}
+.stats-title {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 8rpx;
+  text-shadow: 0 2rpx 4rpx rgba(217, 108, 138, 0.4);
+}
+.stats-sub {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.9);
+}
+.stats-right {
+  display: flex;
+  gap: 36rpx;
+}
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.stat-num {
+  font-size: 44rpx;
+  font-weight: 700;
+  color: #FFFFFF;
+  text-shadow: 0 2rpx 4rpx rgba(217, 108, 138, 0.5);
+  line-height: 1.1;
+}
+.stat-num.reject {
+  color: #FFF5F8;
+}
+.stat-label {
+  font-size: 22rpx;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 6rpx;
+}
+
+/* 标签栏 */
+.tabs {
+  display: flex;
+  gap: 16rpx;
+  padding: 4rpx 0 20rpx;
+}
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 16rpx 0;
+  font-size: 24rpx;
+  font-weight: 600;
+  color: #B3546B;
+  background: #FFF7FA;
+  border-radius: 40rpx;
+  border: 2rpx solid #FFE2EC;
+  transition: all 0.2s;
+}
+.tab.active {
+  background: linear-gradient(135deg, #FFB7C5, #FF9EB5);
+  color: #FFFFFF;
+  border-color: #FF9EB5;
+  box-shadow: 0 8rpx 16rpx -6rpx #FF9EB5;
+}
+
+/* 列表 */
+.cert-list {
+  flex: 1;
+  height: 0;
+}
+
+/* 证书卡片 */
+.cert-card {
+  background: #FFFFFF;
+  border-radius: 32rpx;
+  padding: 28rpx 24rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 12rpx 26rpx -10rpx rgba(255, 183, 197, 0.5), 0 6rpx 14rpx #FFE2EC;
+}
+
+/* 学生信息 */
+.student-row {
+  display: flex;
+  align-items: center;
+  padding-bottom: 20rpx;
+  border-bottom: 2rpx dashed #FFE2EC;
+}
+.avatar {
+  width: 84rpx;
+  height: 84rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FFC1D0, #FF9EB5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #FFFFFF;
+  text-shadow: 0 4rpx 8rpx rgba(217, 108, 138, 0.5);
+  box-shadow: 0 8rpx 16rpx rgba(255, 183, 197, 0.6);
+  flex-shrink: 0;
+}
+.student-info {
+  flex: 1;
+  margin-left: 20rpx;
+}
+.name-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 8rpx;
+}
+.student-name {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #5E3E4A;
+  margin-right: 14rpx;
+}
+.class-tag {
+  background: #FFECF0;
+  border-radius: 40rpx;
+  padding: 4rpx 16rpx;
+  font-size: 20rpx;
+  font-weight: 600;
+  color: #B3546B;
+  border: 1rpx solid #FFD0DA;
+}
+.submit-time {
+  font-size: 22rpx;
+  color: #B18B98;
+}
+
+/* 证书内容 */
+.cert-body {
+  padding: 20rpx 0;
+}
+.cert-title-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 14rpx;
+}
+.cert-icon {
+  font-size: 34rpx;
+  margin-right: 10rpx;
+}
+.cert-title {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #C44B6B;
+}
+.cert-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+.meta-item {
+  font-size: 24rpx;
+  color: #B18B98;
+}
+
+/* 底部按钮 */
+.cert-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20rpx;
+  padding-top: 20rpx;
+  border-top: 2rpx dashed #FFE2EC;
+}
+.btn {
+  padding: 14rpx 40rpx;
+  border-radius: 40rpx;
+  font-size: 26rpx;
+  font-weight: 600;
+}
+.reject-btn {
+  background: #FFECF0;
+  color: #B3546B;
+  border: 2rpx solid #FFD0DA;
+}
+.pass-btn {
+  background: linear-gradient(135deg, #FFB7C5, #FF9EB5);
+  color: #FFFFFF;
+  box-shadow: 0 8rpx 18rpx -6rpx #FF9EB5;
+}
+.status-text {
+  font-size: 26rpx;
+  font-weight: 600;
+  padding: 10rpx 24rpx;
+  border-radius: 40rpx;
+}
+.status-text.passed {
+  color: #2BA471;
+  background: #E6F7EE;
+}
+.status-text.rejected {
+  color: #D96C8A;
+  background: #FFECF0;
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 140rpx 40rpx;
+}
+.empty-emoji {
+  font-size: 110rpx;
+  margin-bottom: 30rpx;
+  opacity: 0.8;
+}
+.empty-text {
+  font-size: 30rpx;
+  color: #B18B98;
+  font-weight: 500;
+  margin-bottom: 14rpx;
+}
+.empty-tip {
+  font-size: 24rpx;
+  color: #D9A8B6;
+}
+.list-bottom-space {
+  height: 40rpx;
+}
+.reject-reason-box {
+  background: #FFF0F5;
+  border-radius: 12rpx;
+  padding: 16rpx 20rpx;
+  margin: 10rpx 0;
+  font-size: 24rpx;
+  color: #D96C8A;
+}

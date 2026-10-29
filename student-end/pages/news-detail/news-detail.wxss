@@ -1,0 +1,8 @@
+/* pages/news-detail/news-detail.wxss */
+.cover { width: 100%; height: 320rpx; border-radius: 16rpx; margin-bottom: 24rpx; background: #f0f0f5; }
+.title { font-size: 38rpx; font-weight: 700; color: var(--text); line-height: 1.5; }
+.meta { font-size: 24rpx; color: var(--text2); margin-top: 14rpx; }
+.content {
+  font-size: 30rpx; color: var(--text); line-height: 1.8; margin-top: 24rpx;
+  white-space: pre-wrap;
+}

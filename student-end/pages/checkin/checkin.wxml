@@ -1,0 +1,18 @@
+<!-- pages/checkin/checkin.wxml —— 签到列表 -->
+<view class="page" style="--accent:{{theme.accent}}; --accent-soft:{{theme.soft}};">
+
+  <view wx:if="{{loading}}" class="card muted">加载中...</view>
+  <view wx:elif="{{list.length === 0}}" class="card muted">老师还没有发起签到</view>
+
+  <view wx:else>
+    <view class="card ci" wx:for="{{list}}" wx:key="_id">
+      <view class="ci-left">
+        <view class="ci-name">{{item.courseName || '课堂签到'}}</view>
+        <view class="ci-info">{{item.teacherName}} · {{item.timeText}}</view>
+        <view class="ci-status {{item.isOpen ? 'open' : 'closed'}}">{{item.isOpen ? '进行中' : '已结束'}}</view>
+      </view>
+      <button wx:if="{{item.isOpen}}" class="btn sign-btn" data-id="{{item._id}}" bindtap="sign">签到</button>
+      <view wx:else class="done muted">已结束</view>
+    </view>
+  </view>
+</view>

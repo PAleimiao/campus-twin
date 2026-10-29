@@ -1,0 +1,42 @@
+<view class="container">
+
+<!-- 顶部插画 -->
+<view class="hero">
+  <text class="hero-emoji">🏠</text>
+  <text class="hero-title">归寝签到</text>
+  <text class="hero-desc">输入老师公布的 4 位宿舍签到码</text>
+</view>
+
+<!-- 输入卡片 -->
+<view class="input-card">
+
+  <view class="code-inputs">
+    <block wx:for="{{codeArr}}" wx:key="index">
+      <input
+        class="code-box {{item ? 'filled' : ''}}"
+        type="number"
+        maxlength="1"
+        value="{{item}}"
+        data-index="{{index}}"
+        bindinput="onCodeInput"
+        bindfocus="onCodeFocus"
+        focus="{{focusIndex === index}}"
+      />
+    </block>
+  </view>
+
+  <button class="submit-btn" bindtap="onSubmit" loading="{{submitting}}">
+    确认签到
+  </button>
+
+  <view class="tip">签到码由老师在宿舍楼下公布</view>
+</view>
+
+<!-- 签到结果展示 -->
+<view wx:if="{{resultVisible}}" class="result-card {{resultOk ? 'ok' : 'fail'}}">
+  <text class="result-emoji">{{resultOk ? '🎉' : '😢'}}</text>
+  <text class="result-title">{{resultText}}</text>
+  <text class="result-sub">{{resultSub}}</text>
+</view>
+
+</view>

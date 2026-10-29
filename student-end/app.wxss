@@ -1,0 +1,68 @@
+/* app.wxss —— 全局样式与设计变量（仿 CXL 避难所 / Firefly 清爽卡片风） */
+/* 设计 token：颜色、圆角、阴影统一在这里改，全站生效 */
+page {
+  /* ★ 默认主题色：樱花粉。用户可在「主题」页切换，切换结果存本地（见 utils/theme.js） */
+  --accent: #ff7eb6;
+  --accent-soft: rgba(255, 126, 182, .12); /* 主题色浅底（标签药丸/选中态） */
+  --bg: #f6f7fb;          /* 页面底色：浅灰蓝 */
+  --card: #ffffff;        /* 卡片底色：白 */
+  --text: #1f2430;        /* 主文字 */
+  --text2: #8b90a0;       /* 次要文字 */
+  --danger: #ff5a5a;      /* 驳回 / 危险 */
+  --success: #2bbf7a;     /* 通过 / 成功 */
+  --radius: 24rpx;        /* 卡片大圆角 */
+  --shadow: 0 4rpx 20rpx rgba(40, 40, 80, .06); /* 柔和阴影 */
+
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
+}
+
+/* 通用卡片 */
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 32rpx;
+  margin: 24rpx;
+}
+
+/* 主按钮（强调色填充） */
+.btn {
+  background: var(--accent);
+  color: #fff;
+  border-radius: 999rpx;
+  font-size: 32rpx;
+  padding: 22rpx 0;
+  border: none;
+  line-height: 1.4;
+}
+.btn::after { border: none; }
+
+/* 次要按钮（描边） */
+.btn-ghost {
+  background: transparent;
+  color: var(--accent);
+  border: 2rpx solid var(--accent);
+  border-radius: 999rpx;
+  font-size: 30rpx;
+  padding: 18rpx 0;
+}
+.btn-ghost::after { border: none; }
+
+/* 标签药丸（#标签 风格） */
+.pill {
+  display: inline-block;
+  font-size: 24rpx;
+  color: var(--accent);
+  background: var(--accent-soft); /* 浅强调色底，跟随主题 */
+  border-radius: 999rpx;
+  padding: 6rpx 20rpx;
+  margin: 0 12rpx 12rpx 0;
+}
+
+/* 次要文字 */
+.muted { color: var(--text2); font-size: 26rpx; }
+
+/* 标题 */
+.h2 { font-size: 34rpx; font-weight: 600; margin-bottom: 8rpx; }

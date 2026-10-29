@@ -1,0 +1,78 @@
+/* pages/index/index.wxss */
+.page { padding-bottom: 60rpx; }
+
+/* 顶部问候条 */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28rpx 32rpx 4rpx;
+}
+.greet { font-size: 36rpx; font-weight: 600; }
+.theme-btn {
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 24rpx;
+  padding: 10rpx 22rpx;
+  border-radius: 999rpx;
+}
+
+/* 校园资讯 */
+.news-swiper {
+  height: 300rpx;
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+.news-img { width: 100%; height: 100%; display: block; }
+.news-ph {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+.news-ph-title { font-size: 36rpx; font-weight: 700; }
+.news-ph-sub { font-size: 24rpx; opacity: .9; margin-top: 8rpx; }
+
+.news-list { margin-top: 8rpx; }
+.news-item {
+  display: flex;
+  align-items: center;
+  padding: 22rpx 0;
+  border-bottom: 1rpx solid #f0f0f5;
+}
+.news-item:last-child { border-bottom: none; }
+/* 资讯配图（可选）：教师在后台上传时才会出现 */
+.news-item-img {
+  width: 150rpx;
+  height: 104rpx;
+  border-radius: 12rpx;
+  margin-right: 18rpx;
+  flex-shrink: 0;
+  background: #f2f3f7;
+}
+.news-item-body { flex: 1; min-width: 0; }
+.news-item-title { font-size: 29rpx; color: var(--text); }
+.news-item-date { font-size: 22rpx; color: var(--text2); margin-top: 6rpx; }
+
+/* 2 列宫格 */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 12rpx;
+}
+.cell {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin: 12rpx;
+  width: calc(50% - 24rpx);
+  box-sizing: border-box;
+  padding: 28rpx 24rpx;
+}
+.cell-icon { font-size: 48rpx; margin-bottom: 8rpx; }
+.cell-name { font-size: 30rpx; font-weight: 600; color: var(--text); }
+.cell-desc { font-size: 22rpx; color: var(--text2); margin-top: 4rpx; }
+
+.logout { margin: 24rpx 24rpx 0; }

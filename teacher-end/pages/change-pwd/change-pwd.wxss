@@ -1,0 +1,5 @@
+/* pages/change-pwd/change-pwd.wxss */
+.page { min-height: 100vh; padding-top: 200rpx; box-sizing: border-box; }
+.field { margin-bottom: 28rpx; }
+.label { display: block; font-size: 26rpx; color: var(--text2); margin-bottom: 12rpx; }
+.input { background: #f3f4f9; border-radius: 16rpx; padding: 24rpx; font-size: 30rpx; }

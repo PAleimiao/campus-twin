@@ -1,0 +1,49 @@
+/* pages/login/login.wxss */
+.page {
+  min-height: 100vh;
+  padding-top: 160rpx;
+  box-sizing: border-box;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 48rpx;
+}
+.logo {
+  font-size: 56rpx;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 4rpx;
+}
+.subtitle {
+  margin-top: 12rpx;
+  color: var(--text2);
+  font-size: 28rpx;
+}
+
+.field {
+  margin-bottom: 28rpx;
+}
+.label {
+  display: block;
+  font-size: 26rpx;
+  color: var(--text2);
+  margin-bottom: 12rpx;
+}
+.input {
+  background: #f3f4f9;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  font-size: 30rpx;
+}
+
+.btn {
+  margin-top: 16rpx;
+}
+
+.tip {
+  margin-top: 24rpx;
+  text-align: center;
+  font-size: 24rpx;
+  color: var(--text2);
+}

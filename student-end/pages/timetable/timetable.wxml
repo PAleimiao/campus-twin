@@ -1,0 +1,39 @@
+<!-- pages/timetable/timetable.wxml —— 课表（周视图） -->
+<view class="page" style="--accent:{{theme.accent}}; --accent-soft:{{theme.soft}};">
+
+  <view wx:if="{{loading}}" class="card muted">加载中...</view>
+
+  <!-- 没有课表 -->
+  <view wx:elif="{{!hasData}}" class="empty">
+    <view class="empty-emoji">📅</view>
+    <view class="empty-text">目前教师还未发布课表，请耐心等待</view>
+    <view class="empty-sub muted">老师通过教师端提交后会自动显示</view>
+  </view>
+
+  <!-- 周视图网格 -->
+  <view wx:else class="tt-wrap">
+    <view class="tt-cap" wx:if="{{semester}}">{{semester}}</view>
+    <view class="tt" style="height:{{gridH}}rpx; width:{{gridW}}rpx;">
+
+      <!-- 星期表头 -->
+      <view class="hd {{item.isToday ? 'hd-today' : ''}}" wx:for="{{headers}}" wx:key="name"
+            style="left:{{item.left}}rpx; width:{{item.width}}rpx;">{{item.name}}</view>
+
+      <!-- 节次 -->
+      <view class="rl" wx:for="{{rowLabels}}" wx:key="text"
+            style="top:{{item.top}}rpx; height:{{item.height}}rpx;">{{item.text}}</view>
+
+      <!-- 网格线 -->
+      <view class="vl" wx:for="{{vlines}}" wx:key="index" style="left:{{item.left}}rpx; height:{{gridH}}rpx;"></view>
+      <view class="hl" wx:for="{{hlines}}" wx:key="index" style="top:{{item.top}}rpx; left:{{leftW}}rpx; width:{{bodyW}}rpx;"></view>
+
+      <!-- 课程块 -->
+      <view class="blk" wx:for="{{blocks}}" wx:key="index"
+            style="left:{{item.left}}rpx; top:{{item.top}}rpx; width:{{item.width}}rpx; height:{{item.height}}rpx; background:{{item.bg}}; border-left:6rpx solid {{item.border}}; color:{{item.text}};">
+        <view class="blk-name">{{item.name}}</view>
+        <view class="blk-loc" wx:if="{{item.loc}}">{{item.loc}}</view>
+        <view class="blk-loc" wx:if="{{item.teacher}}">{{item.teacher}}</view>
+      </view>
+    </view>
+  </view>
+</view>

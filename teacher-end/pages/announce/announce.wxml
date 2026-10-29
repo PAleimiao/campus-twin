@@ -1,0 +1,32 @@
+<!-- pages/announce/announce.wxml —— 发布公告 + 已发布列表 -->
+<view class="page" style="--accent:{{theme.accent}}; --accent-soft:{{theme.soft}};">
+
+  <view class="card">
+    <view class="h2">发布公告</view>
+
+    <input class="ipt" placeholder="公告标题" value="{{title}}" bindinput="onTitle" />
+
+    <view class="field">
+      <text class="label">发布范围</text>
+      <picker mode="selector" range="{{scopes}}" value="{{scopeIndex}}" bindchange="onScope">
+        <view class="picker">{{scopes[scopeIndex]}}</view>
+      </picker>
+    </view>
+
+    <textarea class="textarea" placeholder="公告正文..." value="{{content}}" bindinput="onContent" maxlength="500" />
+
+    <button class="btn" bindtap="publish">发布</button>
+  </view>
+
+  <view class="card">
+    <view class="h2">已发布</view>
+    <view wx:if="{{loading}}" class="muted">加载中...</view>
+    <view wx:elif="{{list.length === 0}}" class="muted">还没有公告</view>
+    <block wx:else>
+      <view class="row" wx:for="{{list}}" wx:key="id">
+        <view class="row-title">{{item.title}}</view>
+        <view class="row-meta">{{item.scopeText}} · {{item.publisherName}} · {{item.dateText}}</view>
+      </view>
+    </block>
+  </view>
+</view>

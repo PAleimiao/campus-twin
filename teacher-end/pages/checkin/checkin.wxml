@@ -1,0 +1,44 @@
+<!-- pages/checkin/checkin.wxml —— 签到管理 -->
+<view class="page" style="--accent:{{theme.accent}}; --accent-soft:{{theme.soft}};">
+
+  <view class="card">
+    <view class="h2">发起签到</view>
+    <input class="ipt" placeholder="课程名称（如 高等数学）" value="{{courseName}}" bindinput="onCourse" />
+    <button class="btn" bindtap="open">发起签到</button>
+  </view>
+
+  <view class="card">
+    <view class="h2">签到记录</view>
+    <view wx:if="{{loading}}" class="muted">加载中...</view>
+    <view wx:elif="{{list.length === 0}}" class="muted">还没有发起过签到</view>
+    <view wx:else>
+      <view class="si" wx:for="{{list}}" wx:key="_id">
+        <view class="si-left">
+          <view class="si-name">{{item.courseName || '课堂签到'}}</view>
+          <view class="si-meta">{{item.timeText}} · {{item.isOpen ? '进行中' : '已结束'}}</view>
+        </view>
+        <view class="si-btns">
+          <view class="mini" data-id="{{item._id}}" bindtap="viewAtt">考勤</view>
+          <view wx:if="{{item.isOpen}}" class="mini danger" data-id="{{item._id}}" bindtap="close">结束</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{openId}}" class="card">
+    <view class="h2">考勤明细</view>
+    <view wx:if="{{att.length === 0}}" class="muted">暂无记录</view>
+    <block wx:else>
+      <view class="att-row" wx:for="{{att}}" wx:key="_id">
+        <view class="att-name">{{item.name}} <text class="att-no">{{item.studentNo}}</text></view>
+        
+        <!-- 👇 改成老师可以点击的 3 个按钮 👇 -->
+        <view class="att-actions">
+          <view class="att-btn {{item.status === 'signed' ? 'signed' : ''}}" catchtap="onChangeStatus" data-id="{{item._id}}" data-status="signed">签到</view>
+          <view class="att-btn {{item.status === 'late' ? 'late' : ''}}" catchtap="onChangeStatus" data-id="{{item._id}}" data-status="late">请假</view>
+          <view class="att-btn {{item.status === 'absent' ? 'absent' : ''}}" catchtap="onChangeStatus" data-id="{{item._id}}" data-status="absent">旷课</view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

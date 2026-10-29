@@ -1,0 +1,94 @@
+<!--pages/qual/qual.wxml-->
+<view class="container">
+
+<!-- 顶部统计 -->
+<view class="stats-card">
+  <view class="stats-left">
+    <text class="stats-title">资质审核</text>
+    <text class="stats-sub">待处理 {{pendingCount}} 份</text>
+  </view>
+  <view class="stats-right">
+    <view class="stat-item">
+      <text class="stat-num">{{passedCount}}</text>
+      <text class="stat-label">已通过</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-num reject">{{rejectedCount}}</text>
+      <text class="stat-label">已驳回</text>
+    </view>
+  </view>
+</view>
+
+<!-- 筛选标签 -->
+<view class="tabs">
+  <view class="tab {{currentTab === 'pending' ? 'active' : ''}}" bindtap="onTabChange" data-tab="pending">待审核 ({{pendingCount}})</view>
+  <view class="tab {{currentTab === 'passed' ? 'active' : ''}}" bindtap="onTabChange" data-tab="passed">已通过 ({{passedCount}})</view>
+  <view class="tab {{currentTab === 'rejected' ? 'active' : ''}}" bindtap="onTabChange" data-tab="rejected">已驳回 ({{rejectedCount}})</view>
+</view>
+
+<!-- 证书列表 -->
+<scroll-view class="cert-list" scroll-y enhanced show-scrollbar="{{false}}">
+  <block wx:if="{{filteredCerts.length > 0}}">
+    
+    <view class="cert-card" wx:for="{{filteredCerts}}" wx:key="_id">
+
+      <!-- 学生信息行 -->
+      <view class="student-row">
+        <view class="avatar">{{item.avatarText || '学'}}</view>
+        <view class="student-info">
+          <view class="name-row">
+            <text class="student-name">{{item.studentName}}</text>
+            <text class="class-tag">{{item.className}}</text>
+          </view>
+          <text class="submit-time">提交时间：{{item.submitTime}}</text>
+        </view>
+      </view>
+
+      <!-- 证书内容 -->
+      <view class="cert-body">
+        <view class="cert-title-row">
+          <text class="cert-icon">🏅</text>
+          <text class="cert-title">{{item.certName}}</text>
+        </view>
+        <view class="cert-meta">
+          <text class="meta-item">证书编号：{{item.certNo}}</text>
+          <text class="meta-item">发证机构：{{item.issuer}}</text>
+        </view>
+      </view>
+
+      <!-- 驳回理由展示 -->
+      <view wx:if="{{item.status === 'rejected' && item.rejectReason}}" class="reject-reason-box">
+        <text>驳回理由：{{item.rejectReason}}</text>
+      </view>
+
+      <!-- 状态显示 / 操作按钮 -->
+      <view class="cert-footer">
+        <block wx:if="{{item.status === 'pending'}}">
+          <view class="btn reject-btn" catchtap="onUpdateStatus" data-id="{{item._id}}" data-status="rejected">驳回</view>
+          <view class="btn pass-btn" catchtap="onUpdateStatus" data-id="{{item._id}}" data-status="passed">通过</view>
+        </block>
+
+        <block wx:elif="{{item.status === 'passed'}}">
+          <view class="status-text passed">✓ 已通过</view>
+        </block>
+
+        <block wx:elif="{{item.status === 'rejected'}}">
+          <view class="status-text rejected">✕ 已驳回</view>
+        </block>
+      </view>
+
+    </view>
+    
+  </block>
+
+  <!-- 空状态 -->
+  <view wx:else class="empty-state">
+    <text class="empty-emoji">🌸</text>
+    <text class="empty-text">暂无此类证书</text>
+    <text class="empty-tip">换个标签看看</text>
+  </view>
+
+  <view class="list-bottom-space"></view>
+</scroll-view>
+
+</view>

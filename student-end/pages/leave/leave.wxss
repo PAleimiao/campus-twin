@@ -1,0 +1,22 @@
+/* pages/leave/leave.wxss */
+.field { margin-bottom: 26rpx; }
+.label { display: block; font-size: 26rpx; color: var(--text2); margin-bottom: 12rpx; }
+.picker {
+  background: #f3f4f9; border-radius: 16rpx; padding: 24rpx; font-size: 30rpx; color: var(--text);
+}
+.textarea {
+  width: 100%; box-sizing: border-box; background: #f3f4f9; border-radius: 16rpx;
+  padding: 24rpx; font-size: 28rpx; min-height: 150rpx;
+}
+
+.rec { padding: 22rpx 0; border-bottom: 1rpx solid #f0f0f5; }
+.rec:last-child { border-bottom: none; }
+.rec-head { display: flex; align-items: center; justify-content: space-between; }
+.rec-type { font-size: 30rpx; font-weight: 600; }
+.status { font-size: 24rpx; padding: 4rpx 18rpx; border-radius: 999rpx; }
+.st-pending { color: #b8860b; background: rgba(255, 193, 7, .15); }
+.st-ok { color: #2bbf7a; background: rgba(43, 191, 122, .15); }
+.st-no { color: #ff5a5a; background: rgba(255, 90, 90, .15); }
+.rec-date { margin-top: 8rpx; }
+.rec-reason { font-size: 28rpx; margin-top: 10rpx; color: var(--text); line-height: 1.6; }
+.rec-comment { font-size: 26rpx; color: var(--text2); margin-top: 10rpx; }

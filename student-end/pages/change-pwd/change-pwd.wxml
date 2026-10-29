@@ -1,0 +1,22 @@
+<!-- pages/change-pwd/change-pwd.wxml —— 强制改密页 -->
+<view class="page" style="--accent:{{theme.accent}}; --accent-soft:{{theme.soft}};">
+  <view class="card">
+    <view class="h2">请修改初始密码</view>
+    <view class="muted" style="margin-bottom:24rpx;">首次登录必须修改密码，完成后才能使用系统</view>
+
+    <view class="field">
+      <text class="label">原密码</text>
+      <input class="input" placeholder="初始密码 123456" password value="{{oldPwd}}" bindinput="onOldInput" />
+    </view>
+    <view class="field">
+      <text class="label">新密码</text>
+      <input class="input" placeholder="至少 6 位" password value="{{newPwd}}" bindinput="onNewInput" />
+    </view>
+    <view class="field">
+      <text class="label">确认新密码</text>
+      <input class="input" placeholder="再输入一次" password value="{{confirmPwd}}" bindinput="onConfirmInput" />
+    </view>
+
+    <button class="btn" bindtap="onSubmit">确认修改</button>
+  </view>
+</view>

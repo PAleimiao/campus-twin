@@ -1,0 +1,55 @@
+<!-- pages/index/index.wxml —— 学生端首页 -->
+<view class="page" style="--accent:{{theme.accent}}; --accent-soft:{{theme.soft}};">
+
+<!-- 顶部问候 + 主题入口 -->
+<view class="topbar">
+  <view class="greet">你好，{{name || '同学'}} 👋</view>
+  <view class="theme-btn" bindtap="goTheme">🎨 主题</view>
+</view>
+
+<!-- 校园资讯：顶部图片轮播 + 资讯列表 -->
+<view class="card news">
+  <view class="h2" style="margin-bottom:16rpx;">校园资讯</view>
+
+  <!-- 轮播图 -->
+  <swiper class="news-swiper" indicator-dots="{{true}}" autoplay="{{true}}" interval="4000"
+          circular="{{true}}" indicator-active-color="{{theme.accent}}">
+    <block wx:if="{{newsBanners.length > 0}}">
+      <swiper-item wx:for="{{newsBanners}}" wx:key="*this">
+        <!-- 👇 这里加上了 bindtap 👇 -->
+        <image class="news-img" src="{{item}}" mode="aspectFill" bindtap="onTapBanner"></image>
+      </swiper-item>
+    </block>
+    <block wx:else>
+      <swiper-item>
+        <view class="news-ph" style="background:linear-gradient(135deg, {{theme.accent}}, #ffd1e6);">
+          <view class="news-ph-title">{{bannerTitle}}</view>
+          <view class="news-ph-sub">{{bannerSubtitle}}</view>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <!-- 资讯列表 -->
+  <view class="news-list">
+    <view class="news-item" wx:for="{{newsList}}" wx:key="title" data-i="{{index}}" bindtap="onTapNews">
+      <image wx:if="{{item.image}}" class="news-item-img" src="{{item.image}}" mode="aspectFill"></image>
+      <view class="news-item-body">
+        <view class="news-item-title">{{item.title}}</view>
+        <view class="news-item-date">{{item.date}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 模块入口宫格 -->
+<view class="grid">
+  <view class="cell" wx:for="{{modules}}" wx:key="key" data-key="{{item.key}}" bindtap="onTapModule">
+    <view class="cell-icon">{{item.icon}}</view>
+    <view class="cell-name">{{item.name}}</view>
+    <view class="cell-desc">{{item.desc}}</view>
+  </view>
+</view>
+
+<button class="btn-ghost logout" bindtap="onLogout">退出登录</button>
+</view>

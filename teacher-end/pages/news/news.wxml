@@ -1,0 +1,53 @@
+<!-- pages/news/news.wxml —— 校园资讯管理 -->
+<view class="page" style="--accent:{{theme.accent}}; --accent-soft:{{theme.soft}};">
+
+  <!-- 顶部轮播图管理 -->
+  <view class="card">
+    <view class="h2">顶部轮播图</view>
+    <view class="muted" style="margin-bottom:16rpx;">学生端「校园资讯」顶部的图片轮播</view>
+
+    <view class="banner-list">
+      <view class="banner-row" wx:for="{{banners}}" wx:key="_id">
+        <image class="banner-thumb" src="{{item.image}}" mode="aspectFill"></image>
+        <view class="del" data-id="{{item._id}}" bindtap="onDelete">删除</view>
+      </view>
+      <view class="muted" wx:if="{{banners.length === 0}}">还没有轮播图</view>
+    </view>
+
+    <view wx:if="{{bannerImg}}" class="picked">
+      <image class="picked-img" src="{{bannerImg}}" mode="aspectFill"></image>
+      <text class="muted">已选择，点下方按钮添加</text>
+    </view>
+    <button class="btn-ghost" bindtap="pickBanner">选择图片</button>
+    <button class="btn" bindtap="addBanner">添加轮播图</button>
+  </view>
+
+  <!-- 资讯列表管理 -->
+  <view class="card">
+    <view class="h2">资讯列表</view>
+    <view class="muted" style="margin-bottom:16rpx;">学生端「校园资讯」下方的条目</view>
+
+    <view class="art-list">
+      <view class="art-row" wx:for="{{articles}}" wx:key="_id">
+        <view class="art-main">
+          <view class="art-title">{{item.title}}</view>
+          <view class="muted">{{item.date}}</view>
+        </view>
+        <view class="del" data-id="{{item._id}}" bindtap="onDelete">删除</view>
+      </view>
+      <view class="muted" wx:if="{{articles.length === 0}}">还没有资讯</view>
+    </view>
+
+    <view class="form">
+      <input class="input" placeholder="资讯标题" value="{{title}}" bindinput="onTitle" />
+      <input class="input" placeholder="日期，如 2026-10-08" value="{{date}}" bindinput="onDate" />
+      <textarea class="input textarea" placeholder="资讯正文（学生端点进去能看到）" value="{{content}}" bindinput="onContent" maxlength="500" />
+      <view class="picked" wx:if="{{articleImg}}">
+        <image class="picked-img" src="{{articleImg}}" mode="aspectFill"></image>
+        <text class="muted">配图已选（可选）</text>
+      </view>
+      <button class="btn-ghost" bindtap="pickArticleImg">选择配图（可选）</button>
+      <button class="btn" bindtap="addArticle">添加资讯</button>
+    </view>
+  </view>
+</view>

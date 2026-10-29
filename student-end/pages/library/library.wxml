@@ -1,0 +1,67 @@
+<view class="container">
+
+<!-- 顶部搜索框 -->
+<view class="search-box">
+  <text class="search-icon">🔍</text>
+  <input
+    class="search-input"
+    placeholder="搜索书名或作者..."
+    placeholder-class="ph"
+    value="{{searchKey}}"
+    bindinput="onSearchInput"
+  />
+  <text wx:if="{{searchKey}}" class="clear-icon" bindtap="clearSearch">✕</text>
+</view>
+
+<!-- 筛选标签 -->
+<view class="tabs">
+  <view class="tab {{currentTab === 'all' ? 'active' : ''}}" bindtap="onTabChange" data-tab="all">全部图书</view>
+  <view class="tab {{currentTab === 'borrowed' ? 'active' : ''}}" bindtap="onTabChange" data-tab="borrowed">我的借阅</view>
+</view>
+
+<!-- 图书列表 -->
+<scroll-view class="book-list" scroll-y enhanced show-scrollbar="{{false}}">
+  <block wx:if="{{filteredBooks.length > 0}}">
+    <view class="book-card" wx:for="{{filteredBooks}}" wx:key="id">
+      
+      <view class="book-cover">{{item.cover}}</view>
+      
+      <view class="book-info">
+        <view class="book-title">{{item.title}}</view>
+        <view class="book-meta">作者：{{item.author}}</view>
+        <view class="book-meta">分类：{{item.category}}</view>
+        <view class="book-stock">馆藏库存：{{item.stock}} 本</view>
+      </view>
+
+      <!-- 状态/操作按钮 -->
+      <view class="book-actions">
+        <!-- 如果已经借了这本书（全局状态），显示已借阅 -->
+        <block wx:if="{{item.isBorrowedByMe}}">
+          <view class="status-tag borrowed">已借阅</view>
+          <view class="btn return-btn" catchtap="onReturnBook" data-id="{{item.id}}">还书</view>
+        </block>
+
+        <!-- 如果没借，且库存大于 0，显示借阅 -->
+        <block wx:elif="{{item.stock > 0}}">
+          <view class="btn borrow-btn" catchtap="onBorrowBook" data-id="{{item.id}}">借阅</view>
+        </block>
+
+        <!-- 如果没借且库存为 0 -->
+        <block wx:else>
+          <view class="status-tag out">已借完</view>
+        </block>
+      </view>
+
+    </view>
+  </block>
+
+  <view wx:else class="empty-state">
+    <text class="empty-emoji">📚</text>
+    <text class="empty-text">没有找到相关图书</text>
+    <text class="empty-tip">换个关键词试试</text>
+  </view>
+
+  <view class="list-bottom-space"></view>
+</scroll-view>
+
+</view>

@@ -1,0 +1,26 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/change-pwd/change-pwd",
+    "pages/index/index",
+    "pages/theme/theme",
+    "pages/news-detail/news-detail",
+    "pages/announce/announce",
+    "pages/leave/leave",
+    "pages/timetable/timetable",
+    "pages/score/score",
+    "pages/checkin/checkin",
+    "pages/ai/ai",
+    "pages/studentDormCheckin/studentDormCheckin",
+    "pages/myQual/myQual",
+    "pages/library/library"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "广演校园 · 学生端",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f6f7fb"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,54 @@
+<!-- pages/leave/leave.wxml —— 请假申请 + 记录 -->
+<view class="page" style="--accent:{{theme.accent}}; --accent-soft:{{theme.soft}};">
+
+  <!-- 申请表单 -->
+  <view class="card">
+    <view class="h2">请假申请</view>
+
+    <view class="field">
+      <text class="label">请假类型</text>
+      <picker mode="selector" range="{{types}}" value="{{typeIndex}}" bindchange="onType">
+        <view class="picker">{{types[typeIndex]}}</view>
+      </picker>
+    </view>
+
+    <view class="field">
+      <text class="label">开始日期</text>
+      <picker mode="date" value="{{start}}" bindchange="onStart">
+        <view class="picker">{{start || '请选择'}}</view>
+      </picker>
+    </view>
+
+    <view class="field">
+      <text class="label">结束日期</text>
+      <picker mode="date" value="{{end}}" bindchange="onEnd">
+        <view class="picker">{{end || '请选择'}}</view>
+      </picker>
+    </view>
+
+    <view class="field">
+      <text class="label">请假原因</text>
+      <textarea class="textarea" placeholder="请说明请假原因..." value="{{reason}}" bindinput="onReason" maxlength="200" />
+    </view>
+
+    <button class="btn" bindtap="submit">提交申请</button>
+  </view>
+
+  <!-- 我的请假记录 -->
+  <view class="card">
+    <view class="h2">我的请假</view>
+    <view wx:if="{{loading}}" class="muted">加载中...</view>
+    <view wx:elif="{{list.length === 0}}" class="muted">还没有请假记录</view>
+    <block wx:else>
+      <view class="rec" wx:for="{{list}}" wx:key="_id">
+        <view class="rec-head">
+          <view class="rec-type">{{item.type}}</view>
+          <view class="status {{item.statusClass}}">{{item.statusText}}</view>
+        </view>
+        <view class="rec-date muted">{{item.start}} ~ {{item.end}}</view>
+        <view class="rec-reason">{{item.reason}}</view>
+        <view wx:if="{{item.comment}}" class="rec-comment">审批意见：{{item.comment}}</view>
+      </view>
+    </block>
+  </view>
+</view>

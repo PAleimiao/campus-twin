@@ -1,0 +1,29 @@
+{
+  "_说明": "复制这个文件，另存为同目录下的 ai.config.json，然后把 apiKey 换成你自己的密钥。ai.config.json 已经被 .gitignore 忽略，不会进 Git 仓库。",
+
+  "_provider说明": "auto=每次开机自动检测（默认，推荐）；mimo=只用云端；ollama=只用本机本地模型；kb=只用内置知识库",
+  "provider": "auto",
+
+  "enabled": true,
+  "apiKey": "在这里粘贴小米 MiMo 的 API Key",
+  "model": "mimo-v2.6-flash",
+  "baseUrl": "https://api.xiaomimimo.com/v1",
+
+  "_mode说明": "kb-first=先查本地知识库（离线也能答，快）；llm-first=每个问题都先问大模型（更聪明，但要联网且花 token）",
+  "mode": "kb-first",
+
+  "_本地模型说明": "provider=ollama 或开机自检选了「本机跑」时生效。需要先装 Ollama（https://ollama.com/download）",
+  "localBaseUrl": "http://localhost:11434/v1",
+  "localModel": "qwen2.5:0.5b",
+
+  "_localMode说明": "本地小模型又慢又容易瞎编，所以单独给一套模式：kb-first（默认）= 知识库答不上来才问它；llm-first = 每题都问它（明显更慢）",
+  "localMode": "kb-first",
+
+  "_showThinking说明": "true（默认）= 让大模型把思考过程也交出来，学生端气泡上方出现「查看思考过程」，点开就能看；设 false 则关掉（略省 token）。注意：只有云端大模型会给，本地知识库和本机小模型没有思考过程",
+  "showThinking": true,
+
+  "_thinkingMaxChars说明": "思考过程最多显示多少字（默认 600，超出的截断并标注「已省略」），免得一个气泡塞几千字",
+  "thinkingMaxChars": 600,
+
+  "timeoutMs": 15000
+}

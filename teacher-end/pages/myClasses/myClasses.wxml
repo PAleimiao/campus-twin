@@ -1,0 +1,62 @@
+<!--pages/myClasses/myClasses.wxml-->
+<view class="container">
+
+<!-- 顶部提示 -->
+<view class="tip-card">
+  <text class="tip-emoji">🌸</text>
+  <view class="tip-text">
+    <text class="tip-title">我的班级</text>
+    <text class="tip-desc">选择一个班级进行管理</text>
+  </view>
+</view>
+
+<!-- 班级列表 -->
+<view class="class-list">
+  <block wx:if="{{classes.length > 0}}">
+    <view
+      class="class-card {{currentClassId === item.id ? 'active' : ''}}"
+      wx:for="{{classes}}"
+      wx:key="id"
+      bindtap="onSelectClass"
+      data-id="{{item.id}}"
+      hover-class="card-hover"
+    >
+      <view class="class-emoji">{{item.emoji}}</view>
+
+      <view class="class-info">
+        <view class="class-name">{{item.name}}</view>
+        <view class="class-detail">
+          <text>👥 {{item.studentCount}} 名学生</text>
+        </view>
+      </view>
+
+      <view wx:if="{{currentClassId === item.id}}" class="active-badge">当前</view>
+      <view wx:else class="arrow">›</view>
+
+      <!-- 👇 核心：垃圾桶必须用 catchtap 阻止冒泡 👇 -->
+      <view
+        class="delete-btn"
+        catchtap="onDeleteClass"
+        data-id="{{item.id}}"
+        data-name="{{item.name}}"
+      >🗑️</view>
+
+    </view>
+  </block>
+
+  <view wx:else class="empty-state">
+    <text class="empty-emoji">🌸</text>
+    <text class="empty-text">还没有班级</text>
+    <text class="empty-tip">点击下方按钮创建班级</text>
+  </view>
+</view>
+
+<!-- 底部添加班级按钮 -->
+<view class="add-class-bar">
+  <view class="add-class-btn" bindtap="onAddClass">
+    <text class="add-icon">＋</text>
+    <text>新建班级</text>
+  </view>
+</view>
+
+</view>

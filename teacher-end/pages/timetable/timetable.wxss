@@ -1,0 +1,18 @@
+/* pages/timetable/timetable.wxss */
+.tip { font-size: 24rpx; line-height: 1.7; }
+.btn-row { display: flex; gap: 20rpx; margin: 20rpx 0; }
+.half { flex: 1; font-size: 28rpx; padding: 16rpx 0; }
+.csv-input {
+  width: 100%; box-sizing: border-box; background: #f3f4f9; border-radius: 16rpx;
+  padding: 22rpx; font-size: 26rpx; min-height: 180rpx; margin-bottom: 20rpx;
+}
+.ipt, .picker { background: #f3f4f9; border-radius: 16rpx; padding: 22rpx; font-size: 28rpx; margin-bottom: 18rpx; }
+.pickers { display: flex; gap: 16rpx; }
+.pickers picker { flex: 1; }
+.pickers .picker { font-size: 26rpx; text-align: center; padding: 20rpx 8rpx; }
+
+.crow { display: flex; align-items: center; padding: 20rpx 0; border-bottom: 1rpx solid #f0f0f5; }
+.cname { font-size: 30rpx; font-weight: 600; color: var(--text); }
+.cmeta { font-size: 24rpx; color: var(--text2); margin-top: 6rpx; }
+.del { margin-left: auto; color: #ff5a5a; font-size: 26rpx; padding: 12rpx 20rpx; }
+.save { margin-top: 24rpx; }

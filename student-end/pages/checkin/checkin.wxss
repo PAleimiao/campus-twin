@@ -1,0 +1,10 @@
+/* pages/checkin/checkin.wxss */
+.ci { display: flex; align-items: center; justify-content: space-between; padding: 28rpx 32rpx; }
+.ci-left { flex: 1; min-width: 0; }
+.ci-name { font-size: 32rpx; font-weight: 600; color: var(--text); }
+.ci-info { font-size: 24rpx; color: var(--text2); margin-top: 8rpx; }
+.ci-status { display: inline-block; font-size: 22rpx; padding: 4rpx 16rpx; border-radius: 999rpx; margin-top: 12rpx; }
+.open { color: #2bbf7a; background: rgba(43, 191, 122, .15); }
+.closed { color: var(--text2); background: #f0f0f5; }
+.sign-btn { width: 160rpx; font-size: 28rpx; padding: 16rpx 0; margin: 0; }
+.done { font-size: 26rpx; }

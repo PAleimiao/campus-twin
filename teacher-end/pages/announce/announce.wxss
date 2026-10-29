@@ -1,0 +1,13 @@
+/* pages/announce/announce.wxss */
+.ipt, .textarea, .picker {
+  background: #f3f4f9; border-radius: 16rpx; padding: 24rpx; font-size: 29rpx;
+  margin-bottom: 22rpx; color: var(--text);
+}
+.textarea { width: 100%; box-sizing: border-box; min-height: 180rpx; }
+.field { margin-bottom: 22rpx; }
+.label { display: block; font-size: 26rpx; color: var(--text2); margin-bottom: 12rpx; }
+
+.row { padding: 20rpx 0; border-bottom: 1rpx solid #f0f0f5; }
+.row:last-child { border-bottom: none; }
+.row-title { font-size: 30rpx; color: var(--text); }
+.row-meta { font-size: 24rpx; color: var(--text2); margin-top: 8rpx; }
